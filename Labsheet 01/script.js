@@ -6,7 +6,7 @@ const products = [
 		label: 'Display Figure',
 		price: 12.99,
 		oldPrice: 18.99,
-		image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80',
+		image: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=900&q=80',
 		description: 'A dynamic shelf-ready figure with layered costume details and a sturdy display base.'
 	},
 	{
@@ -78,6 +78,36 @@ const products = [
 		oldPrice: 5.49,
 		image: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=900&q=80',
 		description: 'A mix of durable glossy stickers for notebooks, water bottles, cases, and scrapbooks.'
+	},
+	{
+		id: 'one-piece-luffy-figure',
+		name: 'One Piece Luffy Grand Voyage Figure',
+		category: 'figures',
+		label: 'One Piece Figure',
+		price: 24.99,
+		oldPrice: 32.99,
+		image: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=900&q=80',
+		description: 'A bold pirate captain display figure with a dynamic pose for an adventure-themed shelf.'
+	},
+	{
+		id: 'dragon-ball-z-manga-set',
+		name: 'Dragon Ball Z Manga Collector Set',
+		category: 'manga',
+		label: 'Dragon Ball Z Manga',
+		price: 18.99,
+		oldPrice: 24.99,
+		image: 'https://images.unsplash.com/photo-1613376023733-0a73315d9b06?auto=format&fit=crop&w=900&q=80',
+		description: 'A collectible manga bundle for fans who enjoy classic battles, rivalries, and heroic journeys.'
+	},
+	{
+		id: 'bleach-swordsman-figure',
+		name: 'Bleach Soul Reaper Action Figure',
+		category: 'figures',
+		label: 'Bleach Figure',
+		price: 21.99,
+		oldPrice: 29.99,
+		image: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80',
+		description: 'A sharp, collector-focused action figure inspired by supernatural sword-fighting anime.'
 	}
 ];
 
@@ -85,7 +115,11 @@ const cartKey = 'animemerch-cart';
 
 function getCart() {
 	try {
-		return JSON.parse(localStorage.getItem(cartKey)) || {};
+		const storedCart = JSON.parse(localStorage.getItem(cartKey));
+		if (!storedCart || Array.isArray(storedCart) || typeof storedCart !== 'object') return {};
+		return Object.fromEntries(Object.entries(storedCart)
+			.filter(([id, quantity]) => getProduct(id) && Number.isFinite(Number(quantity)) && Number(quantity) > 0)
+			.map(([id, quantity]) => [id, Math.min(10, Math.floor(Number(quantity)))]));
 	} catch (error) {
 		return {};
 	}
@@ -107,7 +141,8 @@ function getProduct(id) {
 function addToCart(id, quantity = 1) {
 	if (!getProduct(id)) return;
 	const cart = getCart();
-	cart[id] = (cart[id] || 0) + quantity;
+	const requestedQuantity = Math.max(1, Math.floor(Number(quantity) || 1));
+	cart[id] = Math.min(10, (cart[id] || 0) + requestedQuantity);
 	saveCart(cart);
 	showToast(`${getProduct(id).name} added to cart`);
 }
@@ -220,6 +255,10 @@ function setupCheckout() {
 	if (!form) return;
 	form.addEventListener('submit', event => {
 		event.preventDefault();
+		if (Object.keys(getCart()).length === 0) {
+			showToast('Add an item to your cart before checking out.');
+			return;
+		}
 		const fields = [
 			['fullName', 'name-error', 'Please enter your full name.'],
 			['address', 'address-error', 'Please enter your delivery address.'],
