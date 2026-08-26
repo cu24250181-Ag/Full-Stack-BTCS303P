@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | ANIMEMERCH</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="checkout-page">
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                ANIME<span>MERCH</span> <span class="badge">⛩️ VAULT</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a></li>
+                    <li><a href="checkout.html" class="active">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <h2 class="section-title">Shipping & <span>Checkout</span></h2>
+            <p class="section-subtitle">Complete your details to confirm your order dispatch</p>
+        </div>
+
+        <!-- Inline Order Success Confirmation Banner (Task 7) -->
+        <div id="order-success-banner" style="display: none; margin-bottom: 2rem;"></div>
+
+        <!-- Checkout Layout (Lab Sheet 2 Requirement 6) -->
+        <div class="checkout-grid">
+            <!-- Checkout Form with Inline Errors (No Alert) -->
+            <div class="form-card">
+                <h3 class="form-header">📦 Shipping Address Information</h3>
+                
+                <form id="checkoutForm" novalidate>
+                    <!-- Full Name Field -->
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="e.g. Arpit Giri">
+                        <span class="error-msg" id="name-error"></span>
+                    </div>
+
+                    <!-- Delivery Address Field -->
+                    <div class="form-group full-width">
+                        <label class="form-label" for="address">Delivery Address *</label>
+                        <textarea id="address" class="form-control" placeholder="Street address, Apartment, Hostel, Suite..."></textarea>
+                        <span class="error-msg" id="address-error"></span>
+                    </div>
+
+                    <!-- City & Pincode Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="city">City *</label>
+                            <input type="text" id="city" class="form-control" placeholder="e.g. Roorkee">
+                            <span class="error-msg" id="city-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="pincode">Pincode (6 Digits) *</label>
+                            <input type="text" id="pincode" class="form-control" placeholder="e.g. 249402" maxlength="6">
+                            <span class="error-msg" id="pincode-error"></span>
+                        </div>
+                    </div>
+
+                    <!-- Phone Number Field (10 Digits) -->
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number (10 Digits) *</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="e.g. 7302610538" maxlength="10">
+                        <span class="error-msg" id="phone-error"></span>
+                    </div>
+
+                    <h3 class="form-header" style="margin-top: 2rem;">💳 Select Payment Method</h3>
+                    <div class="payment-methods">
+                        <label class="radio-option">
+                            <input type="radio" name="payment" value="card" checked>
+                            <div>
+                                <strong>Credit / Debit Card (Instant)</strong>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">Visa, Mastercard, RuPay & Express</div>
+                            </div>
+                        </label>
+
+                        <label class="radio-option">
+                            <input type="radio" name="payment" value="upi">
+                            <div>
+                                <strong>UPI / Net Banking</strong>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">Google Pay, PhonePe, Paytm, BHIM</div>
+                            </div>
+                        </label>
+
+                        <label class="radio-option">
+                            <input type="radio" name="payment" value="cod">
+                            <div>
+                                <strong>Cash on Delivery (COD)</strong>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">Pay cash upon parcel arrival</div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary btn-block" style="padding: 15px; font-size: 1.1rem;">
+                            Place Order 🚀
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Order Summary Sidebar (Rendered Dynamically via script.js) -->
+            <div class="order-summary-card">
+                <!-- Content dynamically managed by script.js -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Common Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">ANIME<span>MERCH</span></a>
+                    <p>Your premier sanctuary for authentic Japanese anime merchandise, scale figures, cosplay gear, and manga collectibles.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Product Catalog</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="product.html">Anime Figures</a></li>
+                        <li><a href="product.html">Manga & Books</a></li>
+                        <li><a href="product.html">Plush & Soft Merch</a></li>
+                        <li><a href="product.html">Charms & Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li>📍 COER University, Roorkee</li>
+                        <li>📧 support@animemerch.store</li>
+                        <li>📞 +91 98765 43210</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 ANIMEMERCH Storefront. Full Stack Development Assignment - Mini E-Commerce Project. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (Lab Sheet 2 Requirement) -->
+    <script src="script.js"></script>
+    <script src="particuls.js"></script>
+</body>
+</html>

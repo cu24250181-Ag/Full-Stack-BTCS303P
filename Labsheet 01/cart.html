@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | ANIMEMERCH</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                ANIME<span>MERCH</span> <span class="badge">⛩️ VAULT</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="cart.html" class="active cart-link">Cart <span class="cart-count">0</span></a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <h2 class="section-title">Your Shopping <span>Cart</span></h2>
+            <p class="section-subtitle">Review items, adjust quantities, and calculate grand total</p>
+        </div>
+
+        <!-- Cart Table Wrapper (Lab Sheet 2 Task 4 & Task 5) -->
+        <div class="cart-wrapper">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product Details</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamically rendered by script.js using renderCart() -->
+                </tbody>
+            </table>
+
+            <!-- Cart Totals & Summary Sidebar -->
+            <div class="cart-summary">
+                <div class="coupon-box">
+                    <input type="text" placeholder="Promo / Coupon Code" class="form-control" style="width: 200px;">
+                    <button class="btn btn-secondary" onclick="showToast('Promo code applied!')">Apply</button>
+                </div>
+
+                <div class="cart-totals">
+                    <!-- Dynamically calculated by calculateTotal() using reduce() -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Common Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">ANIME<span>MERCH</span></a>
+                    <p>Your premier sanctuary for authentic Japanese anime merchandise, scale figures, cosplay gear, and manga collectibles.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Product Catalog</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="product.html">Anime Figures</a></li>
+                        <li><a href="product.html">Manga & Books</a></li>
+                        <li><a href="product.html">Plush & Soft Merch</a></li>
+                        <li><a href="product.html">Charms & Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li>📍 COER University, Roorkee</li>
+                        <li>📧 support@animemerch.store</li>
+                        <li>📞 +91 98765 43210</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 ANIMEMERCH Storefront. Full Stack Development Assignment - Mini E-Commerce Project. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (Lab Sheet 2 Requirement) -->
+    <script src="script.js"></script>
+    <script src="particuls.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonlit Swordsman Display Figure | ANIMEMERCH</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                ANIME<span>MERCH</span> <span class="badge">⛩️ VAULT</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle Navigation">☰</button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Single Product Details Layout -->
+        <div class="product-detail-layout">
+            <!-- Product Images Gallery -->
+            <div class="product-detail-gallery">
+                <img id="mainImage" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80" alt="Moonlit Swordsman anime display figure" class="main-detail-img">
+                <div class="thumbnail-row">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80" class="thumbnail active" onclick="changeImage(this.src, this)" alt="Figure front view">
+                    <img src="https://images.unsplash.com/photo-1560961911-ba7ef651a56c?auto=format&fit=crop&w=900&q=80" class="thumbnail" onclick="changeImage(this.src, this)" alt="Anime collectible display">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=900&q=80" class="thumbnail" onclick="changeImage(this.src, this)" alt="Manga and anime merchandise">
+                </div>
+            </div>
+
+            <!-- Product Information -->
+            <div class="product-detail-info">
+                <div class="product-category">ANIMEMERCH EXCLUSIVE • DISPLAY FIGURE</div>
+                <h1 class="detail-title">Moonlit Swordsman 1/7 Display Figure</h1>
+
+                <div class="detail-meta">
+                    <span class="product-rating">★★★★★ (5.0 / 890 Reviews)</span>
+                    <span style="color: var(--success); font-weight: bold;">₹2,499 (In Stock)</span>
+                </div>
+
+                <div class="detail-price">$12.99 <del style="font-size: 1.1rem; color: var(--text-muted);">$18.99</del></div>
+
+                <p class="detail-description">
+                    Bring an adventurous anime mood to your shelf! The <strong>Moonlit Swordsman 1/7 Display Figure</strong> features layered costume details, a dynamic pose, and a sturdy premium PVC finish made for collectors.
+                </p>
+
+                <!-- Technical Specifications -->
+                <ul class="specs-list">
+                    <li><strong>Product Code:</strong> OV-FIG-001</li>
+                    <li><strong>Material:</strong> Premium Non-Toxic PVC & ABS</li>
+                    <li><strong>Origin:</strong> Packed by the ANIMEMERCH studio</li>
+                    <li><strong>Includes:</strong> Figure, display base, and collector sleeve</li>
+                </ul>
+
+                <!-- Quantity Selector -->
+                <div class="quantity-control">
+                    <label style="font-family: var(--font-heading); color: var(--text-secondary);">Quantity:</label>
+                    <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                    <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="10">
+                    <button class="qty-btn" onclick="updateQty(1)">+</button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary" style="flex: 1; padding: 14px;" onclick="addDetailToCart()">
+                        🛒 Add to Cart
+                    </button>
+                    <a href="checkout.html" class="btn btn-secondary" style="flex: 1; padding: 14px;" onclick="addDetailToCart()">
+                        ⚡ Buy Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Common Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">ANIME<span>MERCH</span></a>
+                    <p>Your premier sanctuary for anime figures, manga, plush charms, wall art, and thoughtful fan merchandise.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Product Catalog</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="product.html">Action Figures</a></li>
+                        <li><a href="product.html">Acrylic Keychains</a></li>
+                        <li><a href="product.html">Wall Posters</a></li>
+                        <li><a href="product.html">Pendant Jewelry</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li>📍 COER University, Roorkee</li>
+                        <li>📧 support@animemerch.store</li>
+                        <li>📞 +91 98765 43210</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 ANIMEMERCH Storefront. Full Stack Development Assignment - Mini E-Commerce Project. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (Lab Sheet 2 Submission: script.js) -->
+    <script src="script.js"></script>
+    <script src="particuls.js"></script>
+</body>
+</html>
